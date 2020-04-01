@@ -1,0 +1,102 @@
+---
+- hosts: localhost
+    
+    tasks:
+      - name: "Queue Name"
+        become: yes
+        become_user: jenkins
+        tags: example1
+        lineinfile:
+          path: /var/lib/jenkins/workspace/onboarding-pipeline_develop/src/main/resources/application.properties
+          # The String to Search
+          regexp: "{documentvalidator.queue.name}"
+          # The String to Replace
+          line: "{{ queue_name }}"
+          state: present
+          backup: yes
+        
+        register: queueName
+      - name: "Exchange Name"
+        become: yes
+        become_user: jenkins
+        tags: example1
+        lineinfile:
+          path: /var/lib/jenkins/workspace/onboarding-pipeline_develop/src/main/resources/application.properties
+          # The String to Search
+          regexp: "{documentvalidator.exchange.name}"
+          # The String to Replace
+          line: "{{ exchange_name }}"
+          state: present
+          backup: yes
+        
+        register: exchangeName
+      - name: "Host"
+        become: yes
+        become_user: jenkins
+        tags: example1
+        lineinfile:
+          path: /var/lib/jenkins/workspace/onboarding-pipeline_develop/src/main/resources/application.properties
+          # The String to Search
+          regexp: "{rabbitmq.host}"
+          # The String to Replace
+          line: "{{ rabbitmq_host }}"
+          state: present
+          backup: yes
+        
+        register: host
+      - name: "Port"
+        become: yes
+        become_user: jenkins
+        tags: example1
+        lineinfile:
+          path: /var/lib/jenkins/workspace/onboarding-pipeline_develop/src/main/resources/application.properties
+          # The String to Search
+          regexp: "{rabbitmq.port}"
+          # The String to Replace
+          line: "{{ rabbitmq_port }}"
+          state: present
+          backup: yes
+        
+        register: port
+      - name: "User"
+        become: yes
+        become_user: jenkins
+        tags: example1
+        lineinfile:
+          path: /var/lib/jenkins/workspace/onboarding-pipeline_develop/src/main/resources/application.properties
+          # The String to Search
+          regexp: "{rabbitmq.user}"
+          # The String to Replace
+          line: "{{ rabbitmq_user }}"
+          state: present
+          backup: yes
+        
+        register: user
+      - name: "Password"
+        become: yes
+        become_user: jenkins
+        tags: example1
+        lineinfile:
+          path: /var/lib/jenkins/workspace/onboarding-pipeline_develop/src/main/resources/application.properties
+          # The String to Search
+          regexp: "{rabbitmq.password}"
+          # The String to Replace
+          line: "{{ rabbitmq_password }}"
+          state: present
+          backup: yes
+        
+        register: password
+      - name: "VirtualHost"
+        become: yes
+        become_user: jenkins
+        tags: example1
+        lineinfile:
+          path: /var/lib/jenkins/workspace/onboarding-pipeline_develop/src/main/resources/application.properties
+          # The String to Search
+          regexp: "{rabbitmq.virtual-host}"
+          # The String to Replace
+          line: "{{ rabbitmq_virtual_host }}"
+          state: present
+          backup: yes
+        
+        register: virtualHost
